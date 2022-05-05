@@ -26,9 +26,12 @@ body {
     grid-column-gap: 2rem;
 }
 
+.board-container > * {
+    flex-basis: 1;
+}
+
 .tile {
     display: flex;
-
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
@@ -46,13 +49,18 @@ body {
     font-size: 3rem;
 }
 
+.flipped[value="4"] {
+    background-image: url("devil-emoji.png");
+    background-size: contain;
+    font-size: 0;
+}
+
 .end-tile {
     display: flex;
-
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
-    font-size: 0;
+    font-size: 3rem;
 
     background-color: lightsalmon;
     outline: white solid 0.25rem;
