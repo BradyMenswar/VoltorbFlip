@@ -1,8 +1,10 @@
 :root {
-    --color-primary: #345830;
+    --color-primary: #0a0a0a;
     --color-light: #4A7856;
     --color-dark: #1E3F20;
     --color-secondary: #915050;
+    --color-winner: #FFB833;
+    --color-marked: grey;
 }
 
 * {
@@ -13,8 +15,13 @@
 body {
     background-color: var(--color-primary);
 }
+
+h1 {
+    color:white;
+    text-align: center;
+}
+
 .board-container {
-    border: 2px solid red;
     font-size: 15px;
     display: grid;
     margin: 0 auto;
@@ -36,34 +43,95 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 0;
-
     background-color: var(--color-light);
+    background-blend-mode: multiply;
+    background-image: url("checker-pattern.svg");
+    background-position: center;
+    background-size: 60%;
     outline: white solid 0.25rem;
     border: 0.20rem solid black;
     border-radius: 0.5rem;
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+
+    transition: transform 400ms ease;
    
 }
 
 .flipped {
-    background-color: var(--color-secondary);
-    font-size: 3rem;
+    transform: rotateY(0deg);
+    background-color: var(--color-light);
+    background-blend-mode: normal;
+    background-image: none;
+
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    
+    
+}
+
+.flipped[value="1"] {
+    background-image: url("one.svg");
+}
+
+.flipped[value="2"] {
+    background-image: url("two.svg");
+}
+
+.flipped[value="3"] {
+    background-image: url("three.svg");
 }
 
 .flipped[value="4"] {
-    background-image: url("devil-emoji.png");
-    background-size: contain;
-    font-size: 0;
+    background-image: url("bomb.svg");
+
+    background-color: var(--color-secondary);
 }
 
+.marked {
+    background-color: var(--color-marked) !important;
+    background-image: url("lock.svg"), url("checker-pattern.svg");
+    background-blend-mode: normal, multiply;
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: 70%, 60%;
+}
 .end-tile {
     display: flex;
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2rem;
+    flex-direction: column;
 
-    background-color: lightsalmon;
+    background-color: var(--color-dark);
+    color: white;
     outline: white solid 0.25rem;
     border: 0.20rem solid black;
     border-radius: 0.5rem;
+}
+
+.end-tile-bottom {
+    display: flex;
+    padding: 0.25rem;
+    width: 90%;
+    border-top: 0.2rem solid white;
+    align-items: center;
+    justify-content: center;
+    gap: 5px
+}
+
+.end-tile-bottom > img{
+    width: 1.5rem;
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }

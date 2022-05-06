@@ -1,14 +1,23 @@
 let tileElementArray = [];
 let rowElementArray = [];
 let colElementArray = [];
-let boardString;
 
+let tile = document.getElementById("0");
+let winnerColor = window.getComputedStyle(tile).getPropertyValue("--color-winner");
+let lightColor = window.getComputedStyle(tile).getPropertyValue("--color-light");
+let markedColor = window.getComputedStyle(tile).getPropertyValue("--color-marked");
+let bombColor = window.getComputedStyle(tile).getPropertyValue("--color-secondary");
+
+let boardString;
+let gameState;
 let gameWon = false;
 let gameLost = false;
+let markMode = false;
 
 function SetTileElements() {
     for(var i = 0; i < 25; i++) {
         tileElementArray[i] = document.getElementById(i);
+        tileElementArray[i].style.backgroundColor = lightColor;
     }
     
     for(var i = 0; i < 5; i++) {
@@ -18,6 +27,10 @@ function SetTileElements() {
     for(var i = 0; i < 5; i++) {
         colElementArray[i] = document.getElementById("col" + i);
     }
+}
+
+function ToggleMarkMode() {
+    markMode = !markMode;
 }
 
 function GetRandomIntRange(min, max) {
@@ -142,6 +155,9 @@ function GetColBombs()
 
 function CreateBoard(level)
 {
+    gameState = document.querySelector(".game-state");
+    gameState.textContent = "Game state: In Progress";
+    
     gameWon = false;
     gameLost = false;
     SetTileElements();
@@ -156,35 +172,52 @@ function CreateBoard(level)
 
     for(var i = 0; i < 25; i++) {
         tileElementArray[i].classList.remove('flipped')
+        tileElementArray[i].classList.remove('marked')
         tileElementArray[i].textContent = boardString[i];
         tileElementArray[i].setAttribute("value" , boardString[i]);
     }
 
     for(var i = 0; i < 5; i++) {
-        rowElementArray[i].textContent = rowTotals[i] + "/" + rowBombs[i];
+        rowElementArray[i].children[0].textContent = rowTotals[i];
+        rowElementArray[i].children[1].children[1].textContent = rowBombs[i];
     }
 
     for(var i = 0; i < 5; i++) {
-        colElementArray[i].textContent = colTotals[i] + "/" + colBombs[i];
+        colElementArray[i].children[0].textContent = colTotals[i];
+        colElementArray[i].children[1].children[1].textContent = colBombs[i];
     }
 }
 
 document.addEventListener('click', e => {
-    if(!e.target.classList.contains('tile') || e.target.classList.contains('flipped') || gameWon || gameLost) return;
-    
-    e.target.classList.toggle('flipped');
+    if(!e.target.classList.contains('tile') || e.target.classList.contains('flipped') || (e.target.classList.contains('marked') && !markMode) || gameWon || gameLost) return;
+    if(!markMode) {
+        e.target.classList.toggle('flipped');
+    }
+    else {
+        e.target.classList.toggle('marked');
+        return;
+    }
 
     if(e.target.getAttribute("value") === '4') {
-        alert('You lose.')
+        gameState.textContent = "Game state: Loss";
+        e.target.style.backgroundColor = bombColor;
         gameLost = true;
+        for(var i = 0; i < 25; i++) {
+            tileElementArray[i].classList.add('flipped');
+        }
+        return;
     }
 
     for(var i = 0; i < 25; i++) {
         if((tileElementArray[i].getAttribute("value") === '2' || tileElementArray[i].getAttribute("value") === '3') && !tileElementArray[i].classList.contains('flipped')) return;
     }
 
-    alert("You win!");
-
+    gameState.textContent = "Game state: Won";
+    for(var i = 0; i < 25; i++) {
+        if(tileElementArray[i].getAttribute("value") === '2' || tileElementArray[i].getAttribute("value") === '3') {
+            tileElementArray[i].style.backgroundColor = winnerColor;
+        }
+    }
     gameWon = true;
 
 })
