@@ -31,6 +31,8 @@ function SetTileElements() {
 
 function ToggleMarkMode() {
     markMode = !markMode;
+    let markButton = document.querySelector(".mark-mode");
+    markButton.classList.toggle('active');
 }
 
 function GetRandomIntRange(min, max) {
@@ -155,8 +157,8 @@ function GetColBombs()
 
 function CreateBoard(level)
 {
-    gameState = document.querySelector(".game-state");
-    gameState.textContent = "Game state: In Progress";
+    // gameState = document.querySelector(".game-state");
+    // gameState.textContent = "Game state: In Progress";
     
     gameWon = false;
     gameLost = false;
@@ -199,7 +201,7 @@ document.addEventListener('click', e => {
     }
 
     if(e.target.getAttribute("value") === '4') {
-        gameState.textContent = "Game state: Loss";
+        // gameState.textContent = "Game state: Loss";
         e.target.style.backgroundColor = bombColor;
         gameLost = true;
         for(var i = 0; i < 25; i++) {
@@ -212,7 +214,7 @@ document.addEventListener('click', e => {
         if((tileElementArray[i].getAttribute("value") === '2' || tileElementArray[i].getAttribute("value") === '3') && !tileElementArray[i].classList.contains('flipped')) return;
     }
 
-    gameState.textContent = "Game state: Won";
+    // gameState.textContent = "Game state: Won";
     for(var i = 0; i < 25; i++) {
         if(tileElementArray[i].getAttribute("value") === '2' || tileElementArray[i].getAttribute("value") === '3') {
             tileElementArray[i].style.backgroundColor = winnerColor;

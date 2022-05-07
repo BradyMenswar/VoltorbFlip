@@ -9,118 +9,163 @@
     <script src="script.js" defer></script>
 </head>
 <body onload="CreateBoard(1)">
+    <header>
+        <nav>
+            <h1>Voltorb Flip</h1>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="options-container">
+            <div class="side-container">
+                <h2>Difficulty</h2>
+                <div class="difficulty-bar">
+                    <button class="difficulty-button">1</button>
+                    <button class="difficulty-button">2</button>
+                    <button class="difficulty-button">3</button>
+                    <button class="difficulty-button">4</button>
+                    <button class="difficulty-button">5</button>
+                    <button class="difficulty-button">6</button>
+                    <button class="difficulty-button">7</button>
+                    <button class="difficulty-button">8</button>
+                </div>
+            </div>
+            <div class="side-container">
+                <h2>Color</h2>
+                <input type="color" id="color-picker">
+            </div>
+            <div class="side-container">
+                <img src="" alt="">
+                <button class="restart-button" onclick="CreateBoard(1)">Reset</button>
+            </div>
+        </section>
+        <section class="board-container">
+            <div class="board">
+                <div class="tile" id="0"></div>
+                <div class="tile" id="1"></div>
+                <div class="tile" id="2"></div>
+                <div class="tile" id="3"></div>
+                <div class="tile" id="4"></div>
+                <div class="end-tile" id="row0">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
 
-    <h1 class="game-state">Game state: Playing</h1>
-    <div class="board-container">
-        <div class="tile" id="0"></div>
-        <div class="tile" id="1"></div>
-        <div class="tile" id="2"></div>
-        <div class="tile" id="3"></div>
-        <div class="tile" id="4"></div>
-        <div class="end-tile" id="row0">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
+                <div class="tile" id="5"></div>
+                <div class="tile" id="6"></div>
+                <div class="tile" id="7"></div>
+                <div class="tile" id="8"></div>
+                <div class="tile" id="9"></div>
+                <div class="end-tile" id="row1">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
 
-        <div class="tile" id="5"></div>
-        <div class="tile" id="6"></div>
-        <div class="tile" id="7"></div>
-        <div class="tile" id="8"></div>
-        <div class="tile" id="9"></div>
-        <div class="end-tile" id="row1">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
+                <div class="tile" id="10"></div>
+                <div class="tile" id="11"></div>
+                <div class="tile" id="12"></div>
+                <div class="tile" id="13"></div>
+                <div class="tile" id="14"></div>
+                <div class="end-tile" id="row2">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
 
-        <div class="tile" id="10"></div>
-        <div class="tile" id="11"></div>
-        <div class="tile" id="12"></div>
-        <div class="tile" id="13"></div>
-        <div class="tile" id="14"></div>
-        <div class="end-tile" id="row2">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
+                <div class="tile" id="15"></div>
+                <div class="tile" id="16"></div>
+                <div class="tile" id="17"></div>
+                <div class="tile" id="18"></div>
+                <div class="tile" id="19"></div>
+                <div class="end-tile" id="row3">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
 
-        <div class="tile" id="15"></div>
-        <div class="tile" id="16"></div>
-        <div class="tile" id="17"></div>
-        <div class="tile" id="18"></div>
-        <div class="tile" id="19"></div>
-        <div class="end-tile" id="row3">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
+                <div class="tile" id="20"></div>
+                <div class="tile" id="21"></div>
+                <div class="tile" id="22"></div>
+                <div class="tile" id="23"></div>
+                <div class="tile" id="24"></div>
+                <div class="end-tile" id="row4">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
 
-        <div class="tile" id="20"></div>
-        <div class="tile" id="21"></div>
-        <div class="tile" id="22"></div>
-        <div class="tile" id="23"></div>
-        <div class="tile" id="24"></div>
-        <div class="end-tile" id="row4">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
+                <div class="end-tile" id="col0">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
+                <div class="end-tile" id="col1">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
+                <div class="end-tile" id="col2">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
+                <div class="end-tile" id="col3">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
+                <div class="end-tile" id="col4">
+                    <h4></h4>
+                    <div class="end-tile-bottom">
+                        <img src="bomb.svg" alt="">
+                        <h4></h4>
+                    </div>
+                </div>
+                <button class="mark-mode" onclick="ToggleMarkMode()"></button>
             </div>
-        </div>
-
-        <div class="end-tile" id="col0">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
+        </section>
+        <section class="rules-container">
+            <div class="side-container">
+                <h2>Rules</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut expedita quasi nisi cum deserunt dignissimos quod error dolore, id inventore voluptatem, cumque veniam numquam hic.</p>
+                <div class="rule-section">
+                    <div class="explanation">
+                        <img src="one.svg" alt="">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, sit.</p>
+                    </div>
+                    <div class="explanation">
+                        <img src="bomb.svg" alt="">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, praesentium!</p>
+                    </div>
+                    <div class="explanation">
+                        <img src="lock.svg" alt="">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, perspiciatis.</p>
+                    </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque et, a veritatis quia earum aut nobis, libero molestiae esse minus nihil fugit laborum exercitationem vitae.</p>
+                <img class="img-explanation" src="" alt="The top number of the end tiles is the additive total. The button number is the number of bombs.">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sint consectetur doloremque repudiandae odio corporis quaerat, fugit veniam aut? </p>
             </div>
-        </div>
-        <div class="end-tile" id="col1">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
-        <div class="end-tile" id="col2">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
-        <div class="end-tile" id="col3">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
-        <div class="end-tile" id="col4">
-            <h4></h4>
-            <div class="end-tile-bottom">
-                <img src="bomb.svg" alt="">
-                <h4></h4>
-            </div>
-        </div>
-
-        <div class="controls-container">
-            <button onclick="CreateBoard(GetRandomIntRange(0,8))">Reset</button>
-            <div>
-                Mark mode:
-                <input type="checkbox" onclick="ToggleMarkMode()">
-            </div>
-        </div>
-        
+        </section>
     </div>
 
     

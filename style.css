@@ -13,28 +13,95 @@
     padding: 0;
 }
 body {
+    background-color: white;
+    font-size: 15px;
+}
+
+nav {
+    height: 80px;
     background-color: var(--color-primary);
 }
 
 h1 {
-    color:white;
-    text-align: center;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 0;
+}
+
+.options-container {
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
 }
 
 .board-container {
-    font-size: 15px;
-    display: grid;
-    margin: 0 auto;
-    width: 40vw;
-    min-width: 350px;
+    display: flex;
+    flex-basis: 1;
+    min-width: 40rem;
     padding: 2rem;
-    grid-template-columns: repeat(6, 1fr);
-    grid-row-gap: 2rem;
-    grid-column-gap: 2rem;
 }
 
-.board-container > * {
+.board {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+}
+
+.board > * {
     flex-basis: 1;
+}
+
+
+.difficulty-bar {
+    display: flex;
+    gap: 0.1rem;
+    border-radius: 0.75rem;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.difficulty-button {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    background-color: #555555;
+    color: #CCCCCC;
+}
+
+.difficulty-button:hover {
+    background-color: #777777;
+    color: white;
+}
+
+.side-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+    gap: 1rem;
+}
+
+#color-picker {
+    border: none;
+    background-color: white;
+    width: 100%;
 }
 
 .tile {
@@ -103,7 +170,7 @@ h1 {
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     flex-direction: column;
 
     background-color: var(--color-dark);
@@ -124,14 +191,44 @@ h1 {
 }
 
 .end-tile-bottom > img{
-    width: 1.5rem;
+    width: 1rem;
 }
 
-.controls-container {
+.mark-mode {
     display: flex;
-    flex-direction: column;
-    color: white;
+    aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
+    font-size: 0;
+    background-color: var(--color-marked);
+    background-image: url("lock.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    outline: white solid 0.25rem;
+    border: 0.20rem solid black;
+    border-radius: 0.5rem;
+}
+
+.mark-mode.active {
+    border-color: var(--color-winner);
+}
+
+.rule-section {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
     gap: 1rem;
+
+}
+
+.explanation {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+}
+
+.explanation > img {
+    width: 2rem;
 }
