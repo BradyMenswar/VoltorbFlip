@@ -13,6 +13,7 @@ let gameState;
 let gameWon = false;
 let gameLost = false;
 let markMode = false;
+let difficulty = 1;
 
 function SetTileElements() {
     for(var i = 0; i < 25; i++) {
@@ -137,9 +138,7 @@ function GetColTotals()
         for(var j = 0; j < 5; j++)
             if(boardString[i + (j * 5)] !== '4')
                 totals[i] += parseInt(boardString[i + (j * 5)]);
-                console.log(totals[i]);
     }
-    console.log(totals)
     return totals;
 }
 
@@ -155,11 +154,12 @@ function GetColBombs()
     return totals;
 }
 
-function CreateBoard(level)
+function CreateBoard()
 {
-    // gameState = document.querySelector(".game-state");
-    // gameState.textContent = "Game state: In Progress";
-    
+    gameState = document.querySelector(".game-state");
+    gameState.textContent = "Status: Normal";
+    let level = parseInt(difficulty, 10) - 1;
+    console.log(level)
     gameWon = false;
     gameLost = false;
     SetTileElements();
@@ -191,7 +191,23 @@ function CreateBoard(level)
 }
 
 document.addEventListener('click', e => {
+    const isDifficultyButton = e.target.matches("[data-difficulty]");
+    
+    if(isDifficultyButton) {
+        let currentDifficulty = e.target;
+        e.target.classList.add('active');
+        difficulty = currentDifficulty.value;
+
+        document.querySelectorAll("[data-difficulty].active").forEach( d => {
+            if(d === currentDifficulty) return;
+            d.classList.remove('active');
+        });
+
+        return;
+    }
+
     if(!e.target.classList.contains('tile') || e.target.classList.contains('flipped') || (e.target.classList.contains('marked') && !markMode) || gameWon || gameLost) return;
+
     if(!markMode) {
         e.target.classList.toggle('flipped');
     }
@@ -201,7 +217,7 @@ document.addEventListener('click', e => {
     }
 
     if(e.target.getAttribute("value") === '4') {
-        // gameState.textContent = "Game state: Loss";
+        gameState.textContent = "Status: Game over...";
         e.target.style.backgroundColor = bombColor;
         gameLost = true;
         for(var i = 0; i < 25; i++) {
@@ -214,7 +230,7 @@ document.addEventListener('click', e => {
         if((tileElementArray[i].getAttribute("value") === '2' || tileElementArray[i].getAttribute("value") === '3') && !tileElementArray[i].classList.contains('flipped')) return;
     }
 
-    // gameState.textContent = "Game state: Won";
+    gameState.textContent = "Status: Victory!";
     for(var i = 0; i < 25; i++) {
         if(tileElementArray[i].getAttribute("value") === '2' || tileElementArray[i].getAttribute("value") === '3') {
             tileElementArray[i].style.backgroundColor = winnerColor;

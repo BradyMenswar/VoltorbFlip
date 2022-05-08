@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body onload="CreateBoard(1)">
+<body onload="CreateBoard()">
     <header>
         <nav>
             <h1>Voltorb Flip</h1>
@@ -19,23 +19,20 @@
             <div class="side-container">
                 <h2>Difficulty</h2>
                 <div class="difficulty-bar">
-                    <button class="difficulty-button">1</button>
-                    <button class="difficulty-button">2</button>
-                    <button class="difficulty-button">3</button>
-                    <button class="difficulty-button">4</button>
-                    <button class="difficulty-button">5</button>
-                    <button class="difficulty-button">6</button>
-                    <button class="difficulty-button">7</button>
-                    <button class="difficulty-button">8</button>
+                    <button class="difficulty-button active" value="1" data-difficulty>1</button>
+                    <button class="difficulty-button" value="2" data-difficulty>2</button>
+                    <button class="difficulty-button" value="3" data-difficulty>3</button>
+                    <button class="difficulty-button" value="4" data-difficulty>4</button>
+                    <button class="difficulty-button" value="5" data-difficulty>5</button>
+                    <button class="difficulty-button" value="6" data-difficulty>6</button>
+                    <button class="difficulty-button" value="7" data-difficulty>7</button>
+                    <button class="difficulty-button" value="8" data-difficulty>8</button>
                 </div>
             </div>
             <div class="side-container">
-                <h2>Color</h2>
-                <input type="color" id="color-picker">
-            </div>
-            <div class="side-container">
-                <img src="" alt="">
-                <button class="restart-button" onclick="CreateBoard(1)">Reset</button>
+                <img src="voltorb.svg" alt="" class="img-status">
+                <h3 class="game-state">Status: Normal</h3>
+                <button class="restart-button" onclick="CreateBoard()">Reset</button>
             </div>
         </section>
         <section class="board-container">
@@ -144,7 +141,7 @@
             </div>
         </section>
         <section class="rules-container">
-            <div class="side-container">
+            <div>
                 <h2>Rules</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut expedita quasi nisi cum deserunt dignissimos quod error dolore, id inventore voluptatem, cumque veniam numquam hic.</p>
                 <div class="rule-section">
@@ -162,7 +159,7 @@
                     </div>
                 </div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque et, a veritatis quia earum aut nobis, libero molestiae esse minus nihil fugit laborum exercitationem vitae.</p>
-                <img class="img-explanation" src="" alt="The top number of the end tiles is the additive total. The button number is the number of bombs.">
+                <img class="img-explanation" src="Explanation.svg" alt="The top number of the end tiles is the additive total. The button number is the number of bombs.">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sint consectetur doloremque repudiandae odio corporis quaerat, fugit veniam aut? </p>
             </div>
         </section>

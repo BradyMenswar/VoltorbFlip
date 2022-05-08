@@ -18,8 +18,12 @@ body {
 }
 
 nav {
-    height: 80px;
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    height: 70px;
     background-color: var(--color-primary);
+
 }
 
 h1 {
@@ -38,6 +42,9 @@ h1 {
     padding: 2rem;
     flex-direction: column;
     gap: 3rem;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .rules-container {
@@ -85,6 +92,11 @@ h1 {
     color: white;
 }
 
+.difficulty-button.active {
+    background-color: var(--color-winner);
+    color: black;
+}
+
 .side-container {
     display: flex;
     flex-direction: column;
@@ -94,7 +106,7 @@ h1 {
     align-items: center;
     padding: 1rem 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     gap: 1rem;
 }
 
@@ -134,9 +146,6 @@ h1 {
     background-size: 65%;
     background-position: center;
     background-repeat: no-repeat;
-
-    
-    
 }
 
 .flipped[value="1"] {
@@ -231,4 +240,23 @@ h1 {
 
 .explanation > img {
     width: 2rem;
+}
+
+.img-status {
+    width: 100%;
+    background-color: #dadada;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.img-explanation {
+    width: 100%;
+}
+
+.restart-button {
+    padding: 0.25rem 1.5rem;
+    background-color: #dadada;
+    border: 0.1rem solid var(--color-primary);
+    border-radius: 0.75rem;
 }
