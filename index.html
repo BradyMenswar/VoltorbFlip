@@ -10,9 +10,7 @@
 </head>
 <body onload="CreateBoard()">
     <header>
-        <nav>
-            <h1>Voltorb Flip</h1>
-        </nav>
+        <h1>Voltorb Flip</h1>
     </header>
     <div class="container">
         <section class="options-container">
@@ -30,13 +28,12 @@
                 </div>
             </div>
             <div class="side-container">
-                <img src="voltorb.svg" alt="" class="img-status">
+                <img id="voltorb-status" src="regularVoltorb.svg" alt="" class="img-status">
                 <h3 class="game-state">Status: Normal</h3>
                 <button class="restart-button" onclick="CreateBoard()">Reset</button>
             </div>
         </section>
-        <section class="board-container">
-            <div class="board">
+            <section class="board">
                 <div class="tile" id="0"></div>
                 <div class="tile" id="1"></div>
                 <div class="tile" id="2"></div>
@@ -138,29 +135,28 @@
                     </div>
                 </div>
                 <button class="mark-mode" onclick="ToggleMarkMode()"></button>
-            </div>
         </section>
         <section class="rules-container">
             <div>
                 <h2>Rules</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut expedita quasi nisi cum deserunt dignissimos quod error dolore, id inventore voluptatem, cumque veniam numquam hic.</p>
+                <p>This is Voltorb Flip. The game is played with a 5x5 grid of tiles and the objective is to flip over all of the high value tiles without flipping over any bombs. Here is a description of the tiles:</p>
                 <div class="rule-section">
                     <div class="explanation">
                         <img src="one.svg" alt="">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, sit.</p>
+                        <p>Number tiles can have a value of 1, 2, or 3. 2's and 3's are considered high value tiles.</p>
                     </div>
                     <div class="explanation">
                         <img src="bomb.svg" alt="">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, praesentium!</p>
+                        <p>Bomb tiles end your game when you flip them over. It only takes one mistake so be careful.</p>
                     </div>
                     <div class="explanation">
                         <img src="lock.svg" alt="">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, perspiciatis.</p>
+                        <p>With the lock button on the bottom right of the board you can lock tiles from being pressed. This can come in handy if you know something is likely a bomb and you do not want to forget.</p>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque et, a veritatis quia earum aut nobis, libero molestiae esse minus nihil fugit laborum exercitationem vitae.</p>
+                <p>The tiles on the outside of the board help determine what each tile might be. They contain what the row or column adds up to as well as how many bombs are present. This layout is explained below.</p>
                 <img class="img-explanation" src="Explanation.svg" alt="The top number of the end tiles is the additive total. The button number is the number of bombs.">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sint consectetur doloremque repudiandae odio corporis quaerat, fugit veniam aut? </p>
+                <p>Don't forget that you only need to get all of the 2's and 3's to win. The 1's might help you find out where bombs are, but if you are unsure if a tile is a 1 or a bomb, just leave it! </p>
             </div>
         </section>
     </div>

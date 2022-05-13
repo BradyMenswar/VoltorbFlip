@@ -17,8 +17,9 @@ body {
     font-size: 15px;
 }
 
-nav {
+header {
     display: flex;
+    width: 100vw;
     padding: 2rem;
     align-items: center;
     height: 70px;
@@ -30,11 +31,15 @@ h1 {
     color: white;
 }
 
+p {
+    line-height: 1.5;
+}
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    gap: 0;
+    gap: 10rem;
 }
 
 .options-container {
@@ -50,25 +55,18 @@ h1 {
 .rules-container {
     display: flex;
     flex-direction: column;
+
     padding: 2rem;
 }
 
-.board-container {
-    display: flex;
-    flex-basis: 1;
-    min-width: 40rem;
-    padding: 2rem;
-}
 
 .board {
-    display: grid;
+    padding: 5%;
     width: 100%;
+    aspect-ratio: 1/1;
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 1rem;
-}
-
-.board > * {
-    flex-basis: 1;
+    gap: 2%;
 }
 
 
@@ -176,12 +174,11 @@ h1 {
 }
 .end-tile {
     display: flex;
-    aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     flex-direction: column;
-
+    aspect-ratio: 1/1;
     background-color: var(--color-dark);
     color: white;
     outline: white solid 0.25rem;
@@ -252,11 +249,20 @@ h1 {
 
 .img-explanation {
     width: 100%;
+    padding: 2rem;
 }
 
 .restart-button {
     padding: 0.25rem 1.5rem;
-    background-color: #dadada;
+    background-color: #555555;
+    color: #CCCCCC;
     border: 0.1rem solid var(--color-primary);
     border-radius: 0.75rem;
+}
+
+
+.restart-button:hover {
+    background-color: #777777;
+    color: white;
+    border-color: var(--color-winner);
 }

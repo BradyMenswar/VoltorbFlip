@@ -8,6 +8,8 @@ let lightColor = window.getComputedStyle(tile).getPropertyValue("--color-light")
 let markedColor = window.getComputedStyle(tile).getPropertyValue("--color-marked");
 let bombColor = window.getComputedStyle(tile).getPropertyValue("--color-secondary");
 
+let voltorbStatus = document.getElementById('voltorb-status');
+
 let boardString;
 let gameState;
 let gameWon = false;
@@ -157,6 +159,8 @@ function GetColBombs()
 function CreateBoard()
 {
     gameState = document.querySelector(".game-state");
+
+    voltorbStatus.src = "regularVoltorb.svg";
     gameState.textContent = "Status: Normal";
     let level = parseInt(difficulty, 10) - 1;
     console.log(level)
@@ -218,6 +222,7 @@ document.addEventListener('click', e => {
 
     if(e.target.getAttribute("value") === '4') {
         gameState.textContent = "Status: Game over...";
+        voltorbStatus.src = "deadVoltorb.svg";
         e.target.style.backgroundColor = bombColor;
         gameLost = true;
         for(var i = 0; i < 25; i++) {
@@ -231,6 +236,7 @@ document.addEventListener('click', e => {
     }
 
     gameState.textContent = "Status: Victory!";
+    voltorbStatus.src = "happyVoltorb.svg";
     for(var i = 0; i < 25; i++) {
         if(tileElementArray[i].getAttribute("value") === '2' || tileElementArray[i].getAttribute("value") === '3') {
             tileElementArray[i].style.backgroundColor = winnerColor;
