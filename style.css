@@ -34,41 +34,51 @@ h1 {
 p {
     line-height: 1.5;
 }
+
+
 .container {
     display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 10rem;
+    gap: 0.25rem;
 }
 
 .options-container {
     display: flex;
-    padding: 2rem;
+    padding: 0.75rem;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
-
 }
 
-.rules-container {
+.side-container {
     display: flex;
     flex-direction: column;
-
-    padding: 2rem;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    gap: 0.5rem;
 }
-
-
-.board {
-    padding: 5%;
-    width: 100%;
-    aspect-ratio: 1/1;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 2%;
+.status-container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    gap: 1rem;
 }
-
 
 .difficulty-bar {
     display: flex;
@@ -95,24 +105,29 @@ p {
     color: black;
 }
 
-.side-container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    gap: 1rem;
+.restart-button {
+    padding: 0.25rem 1.5rem;
+    background-color: #555555;
+    color: white;
+    border: 0.1rem solid var(--color-primary);
+    border-radius: 0.75rem;
 }
 
-#color-picker {
-    border: none;
-    background-color: white;
-    width: 100%;
+.restart-button:hover {
+    background-color: #777777;
+    color: white;
+    border-color: var(--color-winner);
 }
+
+.img-status {
+    display: none;
+    width: 100%;
+    background-color: #dadada;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 
 .tile {
     display: flex;
@@ -125,7 +140,6 @@ p {
     background-image: url("checker-pattern.svg");
     background-position: center;
     background-size: 60%;
-    outline: white solid 0.25rem;
     border: 0.20rem solid black;
     border-radius: 0.5rem;
     transform: rotateY(180deg);
@@ -133,6 +147,53 @@ p {
 
     transition: transform 400ms ease;
    
+}
+
+.end-tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    flex-direction: column;
+    background-color: var(--color-dark);
+    color: white;
+    outline: white solid 0.25rem;
+    border: 0.20rem solid black;
+    border-radius: 0.5rem;
+}
+
+.end-tile-bottom {
+    display: flex;
+    padding: 0.25rem;
+    width: 90%;
+    border-top: 0.2rem solid white;
+    align-items: center;
+    justify-content: center;
+    gap: 5px
+}
+
+.end-tile-bottom > img{
+    width: 0.75rem;
+}
+
+.mark-mode {
+    display: flex;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    font-size: 0;
+    background-color: var(--color-marked);
+    background-image: url("lock.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    outline: white solid 0.25rem;
+    border: 0.20rem solid black;
+    border-radius: 0.5rem;
+}
+
+.mark-mode.active {
+    border-color: var(--color-winner);
 }
 
 .flipped {
@@ -172,52 +233,26 @@ p {
     background-position: center;
     background-size: 70%, 60%;
 }
-.end-tile {
+
+.board {
+    padding: 1rem;
+    width: 100%;
+    max-width: 550px;
+    min-width: 350px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+
+}
+
+.rules-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
     flex-direction: column;
-    aspect-ratio: 1/1;
-    background-color: var(--color-dark);
-    color: white;
-    outline: white solid 0.25rem;
-    border: 0.20rem solid black;
-    border-radius: 0.5rem;
+    padding: 2rem;
 }
 
-.end-tile-bottom {
-    display: flex;
-    padding: 0.25rem;
-    width: 90%;
-    border-top: 0.2rem solid white;
-    align-items: center;
-    justify-content: center;
-    gap: 5px
-}
-
-.end-tile-bottom > img{
-    width: 1rem;
-}
-
-.mark-mode {
-    display: flex;
-    aspect-ratio: 1/1;
-    justify-content: center;
-    align-items: center;
-    font-size: 0;
-    background-color: var(--color-marked);
-    background-image: url("lock.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 70%;
-    outline: white solid 0.25rem;
-    border: 0.20rem solid black;
-    border-radius: 0.5rem;
-}
-
-.mark-mode.active {
-    border-color: var(--color-winner);
+.rules-container > div >h2 {
+    text-align: center;
 }
 
 .rule-section {
@@ -239,30 +274,51 @@ p {
     width: 2rem;
 }
 
-.img-status {
-    width: 100%;
-    background-color: #dadada;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
 .img-explanation {
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
 }
 
-.restart-button {
-    padding: 0.25rem 1.5rem;
-    background-color: #555555;
-    color: #CCCCCC;
-    border: 0.1rem solid var(--color-primary);
-    border-radius: 0.75rem;
-}
+@media (min-width: 1080px) {
+    .container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .options-container {
+        padding-top: 1rem;
+        justify-content: flex-start;
+        height: 540px;
+    }
+    
+    .status-container {
+        flex-direction: column;
+        max-width: 250px;
+    }
+
+    .img-status {
+        display: flex;
+    }
+
+    .board {
+        min-width: 500px;
+    }
+    .end-tile {
+        font-size: 1.5rem;
+    }
+
+    .rules-container.side-container {
+        text-align: start;
+        max-width: 500px;
+        padding: 1rem;
+    }
 
 
-.restart-button:hover {
-    background-color: #777777;
-    color: white;
-    border-color: var(--color-winner);
+    .img-explanation {
+        padding: 0.5rem;
+        width: 100%;
+    }
+
 }
